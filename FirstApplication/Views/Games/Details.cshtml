@@ -1,0 +1,105 @@
+﻿@model FirstApplication.Models.Game
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<ul>
+    <h4>Game</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Genres)
+        </dt>
+
+        <!--<dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>-->
+
+        <dd>
+            <ul>
+                @foreach (var gamegenre in Model.Genres)
+                {
+
+                    <li>@gamegenre.Genre.Name</li>
+                }
+                
+            </ul>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsMultiplayer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsMultiplayer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EditDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EditDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ratings)
+        </dt>
+        <dd>
+            @{
+                if (Model.Ratings.Count() > 0)
+                {
+                    <p>The overall rating of this Game is @Model.Ratings.Average(x => x.Rank)</p>
+                        
+                }
+                else
+                {
+                    <p>no ratings yet.</p>
+
+                }
+                using (Html.BeginForm("SetRating","Ratings"))
+                {
+                    @Html.HiddenFor(x => x.GameId)
+                    <ul>
+                        @{ for (int i = 0; i < 10; i++)
+                            {
+                                <li style="list-style-type: none"><input type="radio" name="Rank" value="@i" />@i</li>
+                            }
+                        }
+                    </ul>
+                    <div class="row">
+                        <div class="col-md-10 col-mg-offset-2">
+                            <input type="submit" value="Rate" class="btn btn-default" />
+                        </div>
+                    </div>
+                }
+            }
+            
+            
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GameId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
