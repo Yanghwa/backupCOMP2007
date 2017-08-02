@@ -64,37 +64,8 @@
         <dt>
             @Html.DisplayNameFor(model => model.Ratings)
         </dt>
-        <dd>
-            @{
-                if (Model.Ratings.Count() > 0)
-                {
-                    <p>The overall rating of this Game is @Model.Ratings.Average(x => x.Rank)</p>
-                        
-                }
-                else
-                {
-                    <p>no ratings yet.</p>
-
-                }
-                using (Html.BeginForm("SetRating","Ratings"))
-                {
-                    @Html.HiddenFor(x => x.GameId)
-                    <ul>
-                        @{ for (int i = 0; i < 10; i++)
-                            {
-                                <li style="list-style-type: none"><input type="radio" name="Rank" value="@i" />@i</li>
-                            }
-                        }
-                    </ul>
-                    <div class="row">
-                        <div class="col-md-10 col-mg-offset-2">
-                            <input type="submit" value="Rate" class="btn btn-default" />
-                        </div>
-                    </div>
-                }
-            }
-            
-            
+        <dd id="RatingsControl">
+            @{ Html.RenderAction("RatingsControl", "Ratings", new { gameId = Model.GameId });}
         </dd>
 
     </dl>
@@ -103,3 +74,37 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.GameId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        function SetRatingControlCallbacks() {
+            var rank = $("#RatingsControl a[name='Rank']");
+            rank.on('click', SetRating);
+        }
+
+        function SetRating(e) {
+            var data = { gameId: $(this).data("gameid"), rank: $(this).data("rank") };
+            $.post("@Url.Action("SetRating","Ratings")", data)
+                .done(function (response, status, jqxhr) {
+                    var url = "@Url.Action("RatingsControl","Ratings")";
+                    $("#RatingsControl").load(url, { gameId: data.gameId }, function (responseText, statusText, xhr) {
+                        switch (statusText) {
+                            case "success":
+                                SetRatingControlCallbacks();
+                                break;
+                            default:
+                                break;
+                        }
+                        if (responseText.length == 0) {
+
+                        }
+                    });
+                })
+                .fail(function (jqxhr, status, error) { });
+        }
+
+        $(document).ready(SetRatingControlCallbacks);
+    </script>
+}

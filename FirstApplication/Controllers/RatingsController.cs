@@ -13,6 +13,7 @@ using Microsoft.Owin.Security;
 
 namespace FirstApplication.Controllers
 {
+    [Authorize]
     public class RatingsController : Controller
     {
         private DataContext db = new DataContext();
@@ -43,7 +44,7 @@ namespace FirstApplication.Controllers
         public ActionResult Create()
         {
             ViewBag.GameId = new SelectList(db.Games, "GameId", "Name");
-            ViewBag.UserId = new SelectList(db.AspNetUsers, "Id", "Email");
+            //ViewBag.UserId = new SelectList(db.AspNetUsers, "Id", "Email");
             return View();
         }
 
@@ -62,7 +63,7 @@ namespace FirstApplication.Controllers
             }
 
             ViewBag.GameId = new SelectList(db.Games, "GameId", "Name", rating.GameId);
-            ViewBag.UserId = new SelectList(db.AspNetUsers, "Id", "Email", rating.UserId);
+            //ViewBag.UserId = new SelectList(db.AspNetUsers, "Id", "Email", rating.UserId);
             return View(rating);
         }
 
@@ -79,7 +80,7 @@ namespace FirstApplication.Controllers
                 return HttpNotFound();
             }
             ViewBag.GameId = new SelectList(db.Games, "GameId", "Name", rating.GameId);
-            ViewBag.UserId = new SelectList(db.AspNetUsers, "Id", "Email", rating.UserId);
+            //ViewBag.UserId = new SelectList(db.AspNetUsers, "Id", "Email", rating.UserId);
             return View(rating);
         }
 
@@ -97,12 +98,12 @@ namespace FirstApplication.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.GameId = new SelectList(db.Games, "GameId", "Name", rating.GameId);
-            ViewBag.UserId = new SelectList(db.AspNetUsers, "Id", "Email", rating.UserId);
+            //ViewBag.UserId = new SelectList(db.AspNetUsers, "Id", "Email", rating.UserId);
             return View(rating);
         }
 
         [HttpPost]
-        public ActionResult SetRating(string GameId, int Rank)
+        public Rating SetRating(string GameId, int Rank)
         {
             Rating rating = new Rating();
             rating.RatingId = Guid.NewGuid().ToString();
@@ -114,7 +115,21 @@ namespace FirstApplication.Controllers
             rating.Rank = Rank;
             db.Ratings.Add(rating);
             db.SaveChanges();
-            return RedirectToAction("Details", "Games", new { id = GameId });
+
+            rating = db.Ratings
+                .Include(x => x.Game)
+                .Include(x => x.Game.Ratings)
+                .Include(x => x.User)
+                .SingleOrDefault(x => x.RatingId == rating.RatingId);
+
+            return (rating);
+            //return RedirectToAction("Details", "Games", new { id = GameId });
+        }
+
+        public PartialViewResult RatingsControl(string gameid)
+        {
+            Game model = db.Games.Find(gameid);
+            return PartialView("_RatingsControl", model);
         }
 
         // GET: Ratings/Delete/5

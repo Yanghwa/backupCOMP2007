@@ -9,6 +9,7 @@ namespace FirstApplication.Models
     public partial class GameGenre
     {
         [Key]
+        [DatabaseGenerated(databaseGeneratedOption: DatabaseGeneratedOption.Identity)]
         public string GameGenreId { get; set; }
 
         [Required]
@@ -25,9 +26,12 @@ namespace FirstApplication.Models
 
         public virtual Game Game { get; set; }
 
+        [Display(Name = "Create Date")]
+        [DatabaseGenerated(databaseGeneratedOption: DatabaseGeneratedOption.Identity)]
         public DateTime CreateDate { get; set; }
+        [Display(Name = "Edit Date")]
+        [DatabaseGenerated(databaseGeneratedOption: DatabaseGeneratedOption.Identity)]
+        public DateTime EditDate { get; set; } = DateTime.UtcNow;
 
-        public DateTime EditDate { get; set; }
-        
     }
 }

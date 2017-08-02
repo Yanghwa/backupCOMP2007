@@ -4,6 +4,7 @@ namespace FirstApplication.Models
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using Microsoft.AspNet.Identity.EntityFramework;
 
     public partial class DataContext : DbContext
     {
@@ -19,6 +20,10 @@ namespace FirstApplication.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Ignore<IdentityUserLogin>();
+            modelBuilder.Ignore<IdentityUserRole>();
+            modelBuilder.Ignore<IdentityUserClaim>();
+
             modelBuilder.Entity<Game>()
                 .HasMany(e => e.Genres)
                 .WithRequired(e => e.Game)
@@ -30,10 +35,21 @@ namespace FirstApplication.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Rating>()
-                .Property(e => e.Rank)
-                .HasPrecision(18,0);
+                .HasRequired(e => e.User)
+                .WithMany(e => e.Ratings)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<Rating>()
+                .HasRequired(e => e.Game)
+                .WithMany(e => e.Ratings)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<ApplicationUser>().ToTable("AspNetUsers")
+                .HasMany(e => e.Ratings)
+                .WithRequired(e => e.User);
+                
         }
 
-        public System.Data.Entity.DbSet<FirstApplication.Models.AspNetUser> AspNetUsers { get; set; }
+        //public System.Data.Entity.DbSet<FirstApplication.Models.ApplicationUser> AppicationUser { get; set; }
     }
 }

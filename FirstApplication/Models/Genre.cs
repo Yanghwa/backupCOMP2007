@@ -15,6 +15,7 @@ namespace FirstApplication.Models
         }
 
         [Key]
+        [DatabaseGenerated(databaseGeneratedOption: DatabaseGeneratedOption.Identity)]
         public string GenreId { get; set; }
         
         [Required]
@@ -22,11 +23,15 @@ namespace FirstApplication.Models
         [Display(Name = "Genre Name")]
         public string Name { get; set; }
 
+        [Display(Name = "Create Date")]
+        [DatabaseGenerated(databaseGeneratedOption: DatabaseGeneratedOption.Identity)]
         public DateTime CreateDate { get; set; }
+        [Display(Name = "Edit Date")]
+        [DatabaseGenerated(databaseGeneratedOption: DatabaseGeneratedOption.Identity)]
+        public DateTime EditDate { get; set; } = DateTime.UtcNow;
 
-        public DateTime EditDate { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [Display(Name = "Game")]
+        [InverseProperty("Genre")]
         public virtual ICollection<GameGenre> Games { get; set; }
 
         public override string ToString()

@@ -191,8 +191,29 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations.DataContext\201707262215515_InitialCreateDataContext.cs" />
+    <Compile Include="Migrations.DataContext\201707262215515_InitialCreateDataContext.Designer.cs">
+      <DependentUpon>201707262215515_InitialCreateDataContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations.DataContext\201707262222350_AddDefaultValues.cs" />
+    <Compile Include="Migrations.DataContext\201707262222350_AddDefaultValues.Designer.cs">
+      <DependentUpon>201707262222350_AddDefaultValues.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations.DataContext\201707262235044_AddDefaultGenres.cs" />
+    <Compile Include="Migrations.DataContext\201707262235044_AddDefaultGenres.Designer.cs">
+      <DependentUpon>201707262235044_AddDefaultGenres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations.DataContext\201707270106291_AddRankToRating.cs" />
+    <Compile Include="Migrations.DataContext\201707270106291_AddRankToRating.Designer.cs">
+      <DependentUpon>201707270106291_AddRankToRating.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations.DataContext\Configuration.cs" />
+    <Compile Include="Migrations.Identity\201707262212267_InitialCreateIdentity.cs" />
+    <Compile Include="Migrations.Identity\201707262212267_InitialCreateIdentity.Designer.cs">
+      <DependentUpon>201707262212267_InitialCreateIdentity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations.Identity\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AspNetUser.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\GameGenre.cs" />
@@ -221,6 +242,8 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\comp2007JunghwanYang - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\comp2007JunghwanYang - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -295,6 +318,7 @@
     <Content Include="Views\Ratings\Details.cshtml" />
     <Content Include="Views\Ratings\Edit.cshtml" />
     <Content Include="Views\Ratings\Index.cshtml" />
+    <Content Include="Views\Ratings\_RatingsControl.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -306,6 +330,23 @@
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations.DataContext\201707262215515_InitialCreateDataContext.resx">
+      <DependentUpon>201707262215515_InitialCreateDataContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations.DataContext\201707262222350_AddDefaultValues.resx">
+      <DependentUpon>201707262222350_AddDefaultValues.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations.DataContext\201707262235044_AddDefaultGenres.resx">
+      <DependentUpon>201707262235044_AddDefaultGenres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations.DataContext\201707270106291_AddRankToRating.resx">
+      <DependentUpon>201707270106291_AddRankToRating.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations.Identity\201707262212267_InitialCreateIdentity.resx">
+      <DependentUpon>201707262212267_InitialCreateIdentity.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

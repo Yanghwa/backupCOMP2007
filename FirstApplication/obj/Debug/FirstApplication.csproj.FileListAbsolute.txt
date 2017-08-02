@@ -64,7 +64,6 @@ C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplic
 C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplication\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplication\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplication\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplication\obj\Debug\FirstApplication.csprojResolveAssemblyReference.cache
 C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplication\obj\Debug\FirstApplication.dll
 C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplication\obj\Debug\FirstApplication.pdb
 C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplication\bin\roslyn\csc.exe.config
@@ -103,3 +102,10 @@ C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplic
 C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplication\bin\roslyn\System.Xml.XPath.XDocument.dll
 C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplication\bin\roslyn\vbc.exe.config
 C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplication\bin\roslyn\vbc.rsp
+C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplication\obj\Debug\FirstApplication.Migrations.Identity.InitialCreateIdentity.resources
+C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplication\obj\Debug\FirstApplication.csproj.GenerateResource.Cache
+C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplication\obj\Debug\FirstApplication.Migrations.DataContext.InitialCreateDataContext.resources
+C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplication\obj\Debug\FirstApplication.Migrations.DataContext.AddDefaultValues.resources
+C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplication\obj\Debug\FirstApplication.Migrations.DataContext.AddDefaultGenres.resources
+C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplication\obj\Debug\FirstApplication.csprojResolveAssemblyReference.cache
+C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplication\obj\Debug\FirstApplication.Migrations.DataContext.AddRankToRating.resources

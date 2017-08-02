@@ -10,11 +10,13 @@ using FirstApplication.Models;
 
 namespace FirstApplication.Controllers
 {
+    [Authorize]
     public class GamesController : Controller
     {
         private DataContext db = new DataContext();
 
         // GET: Games
+        [AllowAnonymous]
         public ActionResult Index()
         {
             //var games = db.Games.Include(g => g.Genre);
@@ -26,6 +28,7 @@ namespace FirstApplication.Controllers
         }
 
         // GET: Games/Details/5
+        [AllowAnonymous]
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -63,9 +66,9 @@ namespace FirstApplication.Controllers
                 Game checkgame = db.Games.SingleOrDefault(x => x.Name == game.Name && x.IsMultiplayer == game.IsMultiplayer);
                 if (checkgame == null)
                 {
-                    game.GameId = Guid.NewGuid().ToString();
-                    game.CreateDate = DateTime.Now;
-                    game.EditDate = game.CreateDate;
+                    //game.GameId = Guid.NewGuid().ToString();
+                    //game.CreateDate = DateTime.Now;
+                    //game.EditDate = game.CreateDate;
                     db.Games.Add(game);
                     db.SaveChanges();
 
@@ -76,17 +79,19 @@ namespace FirstApplication.Controllers
                         {
                             GameGenre gameGenre = new GameGenre();
 
-                            gameGenre.GameGenreId = Guid.NewGuid().ToString();
-                            gameGenre.CreateDate = DateTime.Now;
-                            gameGenre.EditDate = gameGenre.CreateDate;
+                            //gameGenre.GameGenreId = Guid.NewGuid().ToString();
+                           // gameGenre.CreateDate = DateTime.Now;
+                            //gameGenre.EditDate = gameGenre.CreateDate;
 
                             gameGenre.GameId = game.GameId;
                             gameGenre.GenreId = genreId;
-                            db.GameGenres.Add(gameGenre);
+                            game.Genres.Add(gameGenre);
                         }
+                        db.Entry(game).State = EntityState.Modified; 
+                        db.SaveChanges();
                     }
 
-                    db.SaveChanges();
+                    
                     return RedirectToAction("Index");
                 }
                 else
