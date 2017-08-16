@@ -19,10 +19,16 @@ namespace FirstApplication.Models
             // Add custom user claims here
             return userIdentity;
         }
-
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         [Display(Name = "Ratings")]
         [InverseProperty("User")]
         public virtual ICollection<Rating> Ratings { get; set; } = new HashSet<Rating>();
+    }
+
+    public class ApplicationRole: IdentityRole
+    {
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

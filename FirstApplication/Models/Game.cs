@@ -7,7 +7,7 @@ namespace FirstApplication.Models
     using System.Data.Entity.Spatial;
     using System.Linq;
 
-    public partial class Game
+    public partial class Game : BaseModel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Game()
@@ -24,12 +24,6 @@ namespace FirstApplication.Models
         public string Name { get; set; }
         [Display(Name = "Multiplay")]
         public bool IsMultiplayer { get; set; }
-        [Display(Name = "Create Date")]
-        [DatabaseGenerated(databaseGeneratedOption:DatabaseGeneratedOption.Identity)]
-        public DateTime CreateDate { get; set; }
-        [Display(Name = "Edit Date")]
-        [DatabaseGenerated(databaseGeneratedOption: DatabaseGeneratedOption.Identity)]
-        public DateTime EditDate { get; set; } = DateTime.UtcNow;
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
 

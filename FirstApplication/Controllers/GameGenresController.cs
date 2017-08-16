@@ -10,6 +10,7 @@ using FirstApplication.Models;
 
 namespace FirstApplication.Controllers
 {
+    [Authorize(Roles = Constants.RoleNameAdmin)]
     public class GameGenresController : Controller
     {
         private DataContext db = new DataContext();

@@ -1,5 +1,7 @@
 namespace FirstApplication.Migrations.Identity
 {
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -15,6 +17,10 @@ namespace FirstApplication.Migrations.Identity
 
         protected override void Seed(FirstApplication.Models.ApplicationDbContext context)
         {
+            foreach(var role in Constants.Roles)
+            {
+                context.Roles.AddOrUpdate(x => x.Name, role);
+            }
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 

@@ -212,8 +212,14 @@
     <Compile Include="Migrations.Identity\201707262212267_InitialCreateIdentity.Designer.cs">
       <DependentUpon>201707262212267_InitialCreateIdentity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations.Identity\201708022143273_AddNameColumns.cs" />
+    <Compile Include="Migrations.Identity\201708022143273_AddNameColumns.Designer.cs">
+      <DependentUpon>201708022143273_AddNameColumns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations.Identity\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\Constants.cs" />
     <Compile Include="Models\DataContext.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\GameGenre.cs" />
@@ -346,6 +352,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations.Identity\201707262212267_InitialCreateIdentity.resx">
       <DependentUpon>201707262212267_InitialCreateIdentity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations.Identity\201708022143273_AddNameColumns.resx">
+      <DependentUpon>201708022143273_AddNameColumns.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

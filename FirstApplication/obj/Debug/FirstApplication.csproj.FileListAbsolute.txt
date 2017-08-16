@@ -109,3 +109,4 @@ C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplic
 C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplication\obj\Debug\FirstApplication.Migrations.DataContext.AddDefaultGenres.resources
 C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplication\obj\Debug\FirstApplication.csprojResolveAssemblyReference.cache
 C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplication\obj\Debug\FirstApplication.Migrations.DataContext.AddRankToRating.resources
+C:\Users\Junghwan Yang\Desktop\COMP2007\Application\FirstApplication\FirstApplication\obj\Debug\FirstApplication.Migrations.Identity.AddNameColumns.resources
